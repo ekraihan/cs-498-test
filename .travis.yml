@@ -3,4 +3,18 @@ language: python
 services:
   - docker
 
+install: echo "Skipping install..."
+
 script: docker build -t edgar-box .
+
+before_deploy:
+  - mkdir docker-images
+  - docker share -o docker-images/edgar-box.tar edgar-box
+
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: "edgar-docker-images"
+  skip_cleanup: true
+  local_dir: docker-images

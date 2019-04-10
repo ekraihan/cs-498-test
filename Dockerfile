@@ -7,8 +7,9 @@ FROM amazonlinux
 # Question: How are "updates" applied? Is it just a matter of downloading a new version?
 
 # Install dependencies
-RUN yum update -y && \
-    yum install -y which vim tar gzip java-1.8.0-openjdk.x86_64 procps bzip2 gcc hostname
+RUN yum update -y
+# RUN yum update -y && \
+#     yum install -y which vim tar gzip java-1.8.0-openjdk.x86_64 procps bzip2 gcc hostname
 
 # Install hadoop
 # RUN curl -s "http://apache.osuosl.org/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz" | tar -xz -C /usr/local/
