@@ -13,5 +13,5 @@ echo "Installing miniconda"
 curl -s "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" > /tmp/install-miniconda.sh
 bash /tmp/install-miniconda.sh -b -f -p /usr/lib/miniconda
 
-echo y | conda install cython
-pip install happybase flask
+echo y | /usr/lib/miniconda/bin/conda install cython
+/usr/lib/miniconda/bin/pip install happybase flask
