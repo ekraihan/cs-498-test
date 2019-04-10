@@ -4,11 +4,14 @@ services: docker
 
 install: echo "Skipping install..."
 
-script: docker build -t edgar-box .
+script:
+  - docker build -t edgar-dev-image -f docker/dev/Dockerfile docker
+  # - docker build -t edgar-prod-image -f docker/prod/Dockerfile docker
 
 before_deploy:
   - mkdir docker-images
-  - docker save -o docker-images/edgar-box.tar edgar-box
+  - docker save -o docker-images/edgar-dev-image.tar edgar-dev-image
+  # - docker save -o docker-images/edgar-prod-image.tar edgar-prod-image
 
 deploy:
   provider: s3
