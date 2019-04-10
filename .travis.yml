@@ -1,7 +1,5 @@
-language: python
 
-services:
-  - docker
+services: docker
 
 install: echo "Skipping install..."
 
