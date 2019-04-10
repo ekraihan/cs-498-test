@@ -1,11 +1,5 @@
 FROM amazonlinux
 
-# This can be shared with
-# docker save -o <tar-file-name> <docker-image>
-# docker load -i <tar-file-name>
-#
-# Question: How are "updates" applied? Is it just a matter of downloading a new version?
-
 # Install dependencies
 RUN yum update -y && \
     yum install -y which vim tar gzip java-1.8.0-openjdk.x86_64 procps bzip2 gcc hostname
@@ -24,13 +18,6 @@ ENV PATH="/usr/lib/miniconda/bin:/usr/local/hbase-1.4.9/bin:/usr/local/hadoop-3.
     JAVA_HOME=/usr/lib/jvm/jre-openjdk
 
 RUN echo y | conda install cython && \
-    pip install happybase
+    pip install happybase flask
 
-# For python (does this work?)
-EXPOSE 5000
-
-# RUN start-hbase.sh && \
-#     hbase-daemon.sh start thrift
-# or,
-# ENTRYPOINT ["start-services.sh"]
-# ?
+ENTRYPOINT start-hbase.sh && hbase-daemon.sh start thrift
