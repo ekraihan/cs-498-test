@@ -9,7 +9,7 @@ script: docker build -t edgar-box .
 
 before_deploy:
   - mkdir docker-images
-  - docker share -o docker-images/edgar-box.tar edgar-box
+  - docker save -o docker-images/edgar-box.tar edgar-box
 
 deploy:
   provider: s3

@@ -1,7 +1,7 @@
 FROM amazonlinux
 
 # This can be shared with
-# docker share -o <tar-file-name> <docker-image>
+# docker save -o <tar-file-name> <docker-image>
 # docker load -i <tar-file-name>
 #
 # Question: How are "updates" applied? Is it just a matter of downloading a new version?
